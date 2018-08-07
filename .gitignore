@@ -1,0 +1,6 @@
+node_modules
+.env
+pendientes
+.vscode
+yarn-error.log
+templates/letters/test.html

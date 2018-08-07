@@ -1,0 +1,332 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: ACAASYS
+# during dev, should point to your local machine
+host: localhost:8080
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+#  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+
+tags:
+  - name: auth
+    description: Auth
+  - name: user
+    description: User
+
+
+paths:
+  /auth/signin:
+    post:
+      tags:
+      - auth
+      description: Login endpoint
+      operationId: AUTH_SIGNIN
+      parameters:
+        - name: body
+          in: body
+          description: Body request
+          required: true
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        "200": 
+          description: Success
+          schema:
+            type: object
+            properties:
+              user:
+                description: User name
+                type: string
+              email:
+                description: User mail
+                type: string
+              token:
+                description: Access token
+                type: string
+        "403":
+          description: Invalid credentials
+          schema:
+            type: object
+            properties: 
+              error: 
+                type: string
+                example: Credenciales invalidas
+  /auth/password:
+    post:
+      tags:
+      - auth
+      description: Change Password
+      operationId: AUTH_CHNG_PSS
+      parameters:
+      - name: currentPassword
+        in: formData
+        description : currentPassword
+        type: string
+        required: true
+      - name: newPassword
+        in: formData
+        description : currentPassword
+        type: string
+        required: true
+      - name: newPassword_confirmation
+        in: formData
+        description : currentPassword
+        type: string
+        required: true
+      responses:
+        "200": 
+          description: Success
+          schema:
+            type: object
+            properties:
+              message:
+                description: Success message
+                type: string
+        "403":
+          description: Invalid credentials
+          schema:
+            type: object
+            properties: 
+              error: 
+                type: string
+                example: Credenciales invalidas
+      security:
+        - jwt: []    
+
+  /user:
+    post:
+      tags:
+      - user
+      description: Store user
+      operationId: USR_STO
+      parameters:
+        - name: name
+          in: formData
+          type: string
+        - name: email
+          in: formData
+          type: string
+        - name: enabled
+          in: formData
+          type: boolean
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/UserResource"
+        "403":
+          description: Validation error
+          schema:
+            $ref: "#/definitions/ValidationError"
+      security:
+        - jwt: []
+    get:
+      tags:
+      - user
+      description: View all users
+      operationId: USR_VIEW
+      summary: List of all users
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items: 
+              $ref: "#/definitions/UserResource"
+      security:
+        - jwt: []
+
+
+  /user/{id}:
+    get:
+      tags:
+      - user
+      description: View user details
+      operationId: USR_VIEW_DET
+      parameters:
+        - name: id
+          in: path
+          description: Id of user
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/UserResource"
+      security:
+        - jwt: []
+    put:
+      tags:
+      - user
+      description: Update user
+      operationId: USR_UPD
+      parameters:
+        - name: id
+          in: path
+          description: Id of user
+          required: true
+          type: integer
+        - name: name
+          in: formData
+          type: string
+        - name: email
+          in: formData
+          type: string
+        - name: enabled
+          in: formData
+          type: boolean
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/UserResource"
+        "403":
+          description: Validation error
+          schema:
+            $ref: "#/definitions/ValidationError"
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/NotFoundError"
+      security:
+        - jwt: []
+    delete:
+      tags:
+      - user
+      description: Destroy user
+      operationId: USR_DES
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        "200": 
+          description: Success
+          schema:
+            properties: 
+              id:
+                type: integer
+        "400":
+          description: Client error
+          schema:
+            $ref: "#/definitions/GeneralError"
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/NotFoundError"
+      security:
+        - jwt: []
+
+  /user/{id}/sessions:
+    get:
+      tags:
+      - user
+      description: view all user sessions
+      operationId: USR_SESS
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+        - name: page
+          in: query
+          type: integer
+        - name: from
+          in: query
+          type: string
+        - name: to
+          in: query
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            properties:
+              totalPages:
+                type: integer
+              page:
+                type: integer
+              rows:
+                type: array
+                items:
+                  $ref: "#/definitions/SessionResource"
+      security:
+        - jwt: []            
+        
+
+definitions:
+  RegionResource:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      number:
+        type: integer
+      isEnable:
+        type: boolean
+  UserResource:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      email:
+        type: string
+      enabled:
+        type: boolean
+  RoleResource:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  SessionResource:
+    properties:
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+      browser:
+        type: string
+      minutes:
+        type: string
+  ValidationError:
+    properties:
+      field:
+        type: string
+  GeneralError:
+    properties:
+      error:
+        type: string
+  NotFoundError:
+    properties:
+      error:
+        type: string
+        example: 'Recurso no encontrado'
+
+securityDefinitions:
+  jwt:
+    type: apiKey
+    in: header
+    name: Authorization
