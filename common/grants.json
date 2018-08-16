@@ -1,0 +1,106 @@
+{
+  "accessKeys" : [    
+    {
+      "name": "Roles@view",
+      "code": "ROL_VIEW"
+    },
+    {
+      "name": "Roles@show",
+      "code": "ROL_VIEW_SHO"
+    },
+    {
+      "name": "Roles@manage",
+      "code": "ROL_MANAGE"
+    },
+    {
+      "name": "Roles@dropdown",
+      "code": "ROL_DROP"
+    },
+    {
+      "name": "Roles@grantsView",
+      "code": "ROL_GRANT_IND"
+    },
+    {
+      "name": "Roles@grantsUpdate",
+      "code": "ROL_GRANT_UPD"
+    },
+    {
+      "name": "Roles@usersGet",
+      "code": "ROL_USR_GET"
+    },
+    {
+      "name": "RolesUsers@view",
+      "code": "ROLUSR_VIEW"
+    },
+    {
+      "name": "RolesUsers@ViewDetail",
+      "code": "ROL_VIEW_DETAIL"
+    },
+    {
+      "name": "RolesUsers@manage",
+      "code": "ROLUSR_MANAGE"
+    },
+    {
+      "name": "User@view",
+      "code": "USR_VIEW"
+    },
+    {
+      "name": "User@manage",
+      "code": "USR_MANAGE"
+    },
+    {
+      "name": "User@sessions",
+      "code": "USR_VIEW_SESS"
+    },
+    {
+      "name": "User@viewGrants",
+      "code": "USR_VIEW_GRANTS"
+    },
+    {
+      "name": "Grants@view",
+      "code": "GRNT_VIEW"
+    }
+  ],
+
+  "widgets" : [
+  ],
+
+  "grants" : [
+    {
+      "name": "Roles - Ver",
+      "group": "Acceso",
+      "description": "Listar los roles registrados",
+      "code": "G_ROL_VIEW",
+      "menu": "ROLES",
+      "accessKeys": ["ROL_VIEW", "ROL_VIEW_SHO", "GRNT_VIEW", "ROL_USR_GET"],
+      "widgets": []
+    },
+    {
+      "name": "Roles - Administrar",
+      "group": "Acceso",
+      "description": "Administrar los roles registrados",
+      "code": "G_ROL_MANAGE",
+      "menu": "ROLES",
+      "accessKeys": ["ROL_VIEW", "ROL_DROP", "ROL_VIEW_SHO", "ROL_MANAGE", "ROL_GRANT_IND", "GRNT_VIEW", "ROL_GRANT_UPD", "ROLUSR_MANAGE", "ROL_USR_GET"],
+      "widgets": []
+    },
+    {
+      "name": "Usuarios - Ver",
+      "group": "Acceso",
+      "description": "Listar los usuarios registradas",
+      "code": "G_USR_VIEW",
+      "menu": "USER",
+      "accessKeys": ["USR_VIEW", "ROL_VIEW_SHO", "RGN_DROP", "USR_VIEW_SESS", "USR_VIEW_GRANTS"],
+      "widgets": []
+    },
+    {
+      "name": "Usuarios - Administrar",
+      "group": "Acceso",
+      "description": "Administrar los usuarios registradas",
+      "code": "G_USR_MANAGE",
+      "menu": "USER",
+      "accessKeys": ["USR_MANAGE", "ROL_DROP", "USR_VIEW_SESS", "USR_VIEW_GRANTS"],
+      "widgets": []
+    }
+  ]
+}

@@ -35,16 +35,8 @@ const jwtAuth = (req, res, next) => {
         return res.error('Usuario desactivado', 403, req.path);
       }
 
-      if (decoded.type === 'client') {
-        /*
-        const instance = await Client.findOne({ where: { id: decoded.client }, attributes: ['isEnabled'] }).catch(res.handleReject.bind(res));
-        if (instance.isEnabled) {
-          req.clientId = decoded.client;
-          req.userType = decoded.type;
-          return next();
-        }
-        return res.error('Usuario desactivado', 403, req.path);
-        */
+      if (decoded.type !== 'admin') {
+        return res.error('Usuario ivalido', 403, req.path);
       }
 
       return res.error('Usuario ivalido', 403, req.path);

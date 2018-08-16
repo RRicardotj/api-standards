@@ -35,12 +35,6 @@ module.exports = {
         allowNull: false,
         comment: 'Grant menu',
       },
-      needRegional: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-        comment: 'indicate if need a regional to be assigned to a role',
-      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
