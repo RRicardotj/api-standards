@@ -122,16 +122,10 @@ model.getMenu = async (id) => {
 };
 
 model.getGrants = userId => sequelize.query(
-  `SELECT g.id, g.description, g.name, g.group, rs.regionId,
-  CASE
-    WHEN g.needRegional = 1 AND rg.id IS NULL THEN 'No posee regional'
-    WHEN g.needRegional = 0 AND rg.id IS NULL THEN 'No necesita regional'
-    ELSE rg.name
-  END region
+  `SELECT g.id, g.description, g.name, g.group
     FROM roles__users rs
     LEFT JOIN grants__roles gr ON rs.roleId = gr.roleId
     LEFT JOIN grants g ON gr.grantId = g.id
-    LEFT JOIN regions rg ON rs.regionId = rg.id
   WHERE rs.userId = :userId AND g.id IS NOT NULL`,
   {
     type: sequelize.QueryTypes.SELECT,
