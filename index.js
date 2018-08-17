@@ -7,7 +7,7 @@ const express = require('express');
 
 const app = express();
 const server = require('http').Server(app);
-// require('./socket').init(server, { cookie: false });
+require('./socket').init(server, { cookie: false });
 
 app.use(bodyParser.urlencoded({
   extended: true,
