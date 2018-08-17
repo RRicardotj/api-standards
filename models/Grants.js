@@ -43,7 +43,7 @@ const model = sequelize.define('grants', fields);
 
 model.index = () => sequelize
   .query(
-    'SELECT id, code, name, description, needRegional, `group` FROM grants',
+    'SELECT id, code, name, description, `group` FROM grants',
     { type: sequelize.QueryTypes.SELECT },
   );
 

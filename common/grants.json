@@ -90,7 +90,7 @@
       "description": "Listar los usuarios registradas",
       "code": "G_USR_VIEW",
       "menu": "USER",
-      "accessKeys": ["USR_VIEW", "ROL_VIEW_SHO", "RGN_DROP", "USR_VIEW_SESS", "USR_VIEW_GRANTS"],
+      "accessKeys": ["USR_VIEW", "ROL_VIEW_SHO", "USR_VIEW_SESS", "USR_VIEW_GRANTS"],
       "widgets": []
     },
     {
