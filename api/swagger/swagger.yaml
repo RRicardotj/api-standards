@@ -23,6 +23,13 @@ tags:
     description: Auth
   - name: user
     description: User
+  - name: grant
+    description: Grant
+  - name: role
+    description: Role
+  - name: widget
+    description: Widget
+  
 
 
 paths:
@@ -269,22 +276,371 @@ paths:
                 items:
                   $ref: "#/definitions/SessionResource"
       security:
-        - jwt: []            
+        - jwt: []      
+
+  /grant:
+    get:
+      tags:
+      - grant
+      description: View all grants
+      operationId: GRNT_VIEW
+      summary: List of all grants
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items: 
+              type: object
+              properties:
+                value:
+                  type: integer
+                text:
+                  type: string
+      security:
+        - jwt: []
+    post:
+      tags:
+      - grant
+      description: Validate grants
+      operationId: GRNT_CHCK
+      parameters:
+      - name: grants
+        in: formData
+        type: array
+        items:
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              type: object
+        "403":
+          description: Validation error
+          schema:
+            $ref: "#/definitions/ValidationError"
+      security:
+        - jwt: []
+
+  /role:
+    get:
+      tags:
+      - role
+      summary: List of roles
+      description: List of roles in users
+      operationId: ROL_VIEW
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items: 
+              $ref: "#/definitions/RoleResource" 
+      security:
+          - jwt: []
+    post:
+      tags:
+      - role
+      summary: Create role
+      description: Create a role
+      operationId: ROLE_STO
+      parameters:
+        - name: name
+          in: formData
+          description: Name of role
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/RoleResource"
+        "403":
+          description: Validation error
+          schema:
+            $ref: "#/definitions/ValidationError"
+      security:
+        - jwt: []
+        
+  /role/{id}:
+    put:
+      tags:
+      - role
+      summary: Update role
+      description: Update a rol
+      operationId: ROLE_UPD
+      parameters:
+        - name: id
+          in: path
+          description: Role id
+          required: true
+          type: integer
+        - name: name
+          in: formData
+          description: Name of role
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/RoleResource"
+        "403":
+          description: Validation error
+          schema:
+            $ref: "#/definitions/ValidationError"
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/NotFoundError"
+      security:
+        - jwt: []
+    get:
+      tags:
+      - role
+      description: View role details
+      operationId: ROL_VIEW_DET
+      parameters:
+        - name: id
+          in: path
+          description: Role id
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/RoleResource"
+        "403":
+          description: Validation error
+          schema:
+            $ref: "#/definitions/ValidationError"
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/NotFoundError"
+      security:
+        - jwt: []
+    delete:
+      tags:
+      - role
+      description: Destroy Role
+      operationId: ROL_DES
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+      responses:
+        "200": 
+          description: Success
+          schema:
+            properties: 
+              id:
+                type: integer
+        "400":
+          description: Client error
+          schema:
+            $ref: "#/definitions/GeneralError"
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/NotFoundError"
+      security:
+        - jwt: []
+
+  /role/dropdown:
+    get:
+      tags:
+      - role
+      summary: List of roles actives to fill a dropdown
+      operationId: ROLE_DROPDOWN
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items: 
+              type: object
+              properties:
+                value:
+                  type: integer
+                text:
+                  type: string
+      security:
+        - jwt: []
+  /role/{id}/grants:
+    get:
+      tags:
+      - role
+      description: List grants of role
+      operationId: ROL_GRANT_IND
+      parameters:
+        - name: id
+          in: path
+          description: Role id
+          type: integer
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                grantId:
+                  type: integer
+      security:
+        - jwt: []
+    put:
+      tags:
+      - role
+      description: Set grants to role
+      operationId: ROL_GRANT_UPD
+      parameters:
+        - name: id
+          in: path
+          description: Role id
+          type: integer
+          required: true
+        - name: grantId
+          in: formData
+          required: true
+          description: Grants Ids
+          type: array
+          items:
+            type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                grantId:
+                  type: integer
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/NotFoundError"
+      security:
+        - jwt: []
+  
+  /widget:
+    get:
+      tags:
+      - widget
+      description: Get users widgets
+      operationId: WGT_IND
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              zoneA:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                    component:
+                      type: string
+                    position:
+                      type: integer
+                    color:
+                      type: string
+                    enabled:
+                      type: string
+              zoneB:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                    component:
+                      type: string
+                    position:
+                      type: integer
+                    color:
+                      type: string
+                    enabled:
+                      type: string
+      security:
+        - jwt: []
+  /widget/order:
+    post:
+      tags:
+      - widget
+      description: Set widget order
+      operationId: WGT_ORD
+      parameters:
+        - name: widgets
+          in: formData
+          required: true
+          description: Widgets
+          type: array
+          items:
+            type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              result:
+                type: string
+      security:
+        - jwt: []
+  /widget/{code}:
+    post:
+      tags:
+      - widget
+      description: Get widget data by code
+      operationId: WGT_DAT
+      parameters:
+        - name: code
+          in: path
+          required: true
+          description: widgetCode
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+              zone:
+                type: string
+              component:
+                type: string
+              position:
+                type: integer
+              data:
+                type: object
+              isEnabled:
+                type: boolean
+        "403":
+          description: user is not witget owner
+          schema:
+            type: object
+            properties: 
+              error: 
+                type: string
+                example: El widget no corresponde al usuario
+      security:
+        - jwt: []
         
 
 definitions:
-  RegionResource:
-    properties:
-      id:
-        type: integer
-      name:
-        type: string
-      description:
-        type: string
-      number:
-        type: integer
-      isEnable:
-        type: boolean
   UserResource:
     properties:
       id:
