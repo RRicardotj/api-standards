@@ -14,7 +14,7 @@ const bootServer = () => {
   }));
 
   nsp.on('connection', async (socket) => {
-    console.log('NEW CONNECTION');
+    console.log('\x1b[33m%s\x1b[0m', 'NEW CONNECTION'); // eslint-disable-line
 
     const userWidgets = await Widget.getByUser(socket.decoded_token.user);
 
