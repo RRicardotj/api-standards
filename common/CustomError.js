@@ -1,7 +1,8 @@
 module.exports = class CustomError extends Error {
-  constructor(LITERAL, status = 500) {
+  constructor(message, status = 500, code) {
     super();
-    this.LITERAL = LITERAL;
+    this.message = message;
     this.status = status;
+    this.code = code;
   }
 };

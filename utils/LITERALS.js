@@ -18,6 +18,13 @@ const getEnglishMesages = (LITERAL) => {
   return message;
 };
 
+
+/**
+ * Get readable message by literal code
+ * @param {String} LITERAL LITERAL CODE -Example: PASSWORD_INVALID
+ * @param {String} lenguage 'es' for spanish and 'en' for english
+ * @returns {String} message
+ */
 const getMessage = (LITERAL, lenguage) => {
   switch (lenguage) {
     case 'es':

@@ -3,5 +3,9 @@
   "RESOURCE_NOT_FOUND": "Recurso no encontrado",
   "NOT_FOUND": "No encontrado",
   "TOKEN_INVALID": "Token inválido",
-  "UNAUTHORIZED_ACCESS": "Acceso no autorizado"
+  "UNAUTHORIZED_ACCESS": "Acceso no autorizado",
+  "NOT_MODEL": "Debe especifificar una entidad",
+  "USER_DISABLED": "Usuario deshabilitado",
+  "CREDENTIALS_IVALID": "Credenciales inválidas",
+  "PASSWORD_CHANGED": "La contraseña ha sido cambiada"
 }

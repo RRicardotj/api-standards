@@ -30,6 +30,11 @@ const fields = {
     allowNull: false,
     comment: 'The user is or not enabled',
   },
+  language: {
+    type: Sequelize.STRING(2),
+    allowNull: false,
+    defaultValue: 'es',
+  },
 };
 
 const model = sequelize.define('users', fields);

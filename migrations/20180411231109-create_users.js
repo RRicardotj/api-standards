@@ -30,6 +30,11 @@ module.exports = {
         allowNull: false,
         comment: 'The user is or not enabled',
       },
+      language: {
+        type: Sequelize.STRING(2),
+        allowNull: false,
+        defaultValue: 'es',
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,

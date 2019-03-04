@@ -3,5 +3,9 @@
   "RESOURCE_NOT_FOUND": "Resource not found",
   "NOT_FOUND": "Not found",
   "TOKEN_INVALID": "Invalid token",
-  "UNAUTHORIZED_ACCESS": "Unauthorized access"
+  "UNAUTHORIZED_ACCESS": "Unauthorized access",
+  "NOT_MODEL": "Must specify an entity",
+  "USER_DISABLED": "User is not enabled",
+  "CREDENTIALS_IVALID": "Invalid credentials",
+  "PASSWORD_CHANGED": "Password has been changed"
 }

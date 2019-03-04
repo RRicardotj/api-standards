@@ -23,12 +23,13 @@ const jwtAuth = (req, res, next) => {
       }
 
       if (decoded.type === 'admin') {
-        const instance = await User.findOne({ where: { id: decoded.user }, attributes: ['isEnabled', 'name'] }).catch(res.handleReject.bind(res));
+        const instance = await User.findOne({ where: { id: decoded.user }, attributes: ['isEnabled', 'name', 'language'] }).catch(res.handleReject.bind(res));
         if (instance.isEnabled) {
           req.userId = decoded.user;
           req.sessionId = decoded.session;
           req.userType = decoded.type;
           req.userName = instance.name;
+          req.userLanguage = instance.language;
           await Session.update({ updatedAt: moment.tz(new Date(), process.env.TZ).format('YYYY-MM-DD HH:mm:ss') }, { where: { id: req.sessionId } });
           return next();
         }

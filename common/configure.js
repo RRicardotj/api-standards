@@ -1,5 +1,7 @@
 const express = require('express');
 const ErrorLogic = require('./ErrorLogic');
+const CustomError = require('./CustomError');
+const LITERALS = require('../utils/LITERALS');
 
 express.request.only = function only() {
   const data = {};
@@ -37,6 +39,19 @@ express.response.handleReject = function handleReject(err) {
         return this.error(err.message);
         // break;
     }
+  }
+
+  if (err instanceof CustomError) {
+    if (err.code) {
+      switch (err.code) {
+        case LITERALS.NOT_MODEL:
+          return this.error('Ocurrió un error, revise los controladores', 500);
+        default:
+          return this.error(err.message);
+      }
+    }
+
+    return this.error(err.message, err.status);
   }
 
   console.log('=ERROR====', err); // eslint-disable-line
