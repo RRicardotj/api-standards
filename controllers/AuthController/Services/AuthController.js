@@ -63,7 +63,7 @@ class AuthController extends Handler {
 
     await user.update({ password: hashedPassword });
 
-    return { message: this.getMessage(this.LITERALS.PASSWORD_CHANGED, user.language) };
+    return { message: this.getMessage(this.LITERALS.PASSWORD_CHANGED) };
   }
 }
 
