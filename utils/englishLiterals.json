@@ -1,0 +1,7 @@
+{
+  "PASSWORD_INVALID": "Invalid password",
+  "RESOURCE_NOT_FOUND": "Resource not found",
+  "NOT_FOUND": "Not found",
+  "TOKEN_INVALID": "Invalid token",
+  "UNAUTHORIZED_ACCESS": "Unauthorized access"
+}

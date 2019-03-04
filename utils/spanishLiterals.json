@@ -1,0 +1,7 @@
+{
+  "PASSWORD_INVALID": "Contraseña inválida",
+  "RESOURCE_NOT_FOUND": "Recurso no encontrado",
+  "NOT_FOUND": "No encontrado",
+  "TOKEN_INVALID": "Token inválido",
+  "UNAUTHORIZED_ACCESS": "Acceso no autorizado"
+}
