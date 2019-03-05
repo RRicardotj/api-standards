@@ -2,6 +2,7 @@ const CustomError = require('../common/CustomError');
 const LITERALS = require('../utils/LITERALS');
 const moment = require('moment-timezone');
 const Validator = require('../common/validator');
+const sequelize = require('../common/connection');
 
 class Handler {
   constructor(model, lenguage = 'en') {
@@ -12,6 +13,7 @@ class Handler {
     this.lenguage = lenguage;
     this.moment = moment;
     this.Validator = Validator;
+    this.transaction = sequelize.transaction;
 
     this.getMessage = this.getMessage.bind(this);
     this.findById = this.findById.bind(this);

@@ -10,7 +10,7 @@ const getSpanishMessages = (LITERAL) => {
   return message;
 };
 
-const getEnglishMesages = (LITERAL) => {
+const getEnglishMessages = (LITERAL) => {
   const message = englishLiterals[LITERAL];
 
   if (!message) { return 'An error occurred'; }
@@ -30,9 +30,9 @@ const getMessage = (LITERAL, lenguage) => {
     case 'es':
       return getSpanishMessages(LITERAL);
     case 'en':
-      return getEnglishMesages(LITERAL);
+      return getEnglishMessages(LITERAL);
     default:
-      return getEnglishMesages(LITERAL);
+      return getEnglishMessages(LITERAL);
   }
 };
 

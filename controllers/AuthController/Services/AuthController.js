@@ -12,7 +12,7 @@ class AuthController extends Handler {
   }
 
   async signIn(email, password, browserDetail) {
-    const user = await this.model.findOne({
+    const user = await this.findOne({
       where: { email },
       attributes: ['id', 'email', 'password', 'isEnabled', 'name'],
     });
@@ -45,9 +45,8 @@ class AuthController extends Handler {
     return { user: user.name, email: user.email, token };
   }
 
-  // eslint-disable-next-line camelcase
   async passwordChange(userId, currentPassword, newPassword) {
-    const user = await this.model.findOne({
+    const user = await this.findOne({
       where: { id: userId },
       attributes: ['id', 'password', 'email', 'language'],
     });
