@@ -14,7 +14,7 @@
     "seed": "sequelize db:seed:all",
     "regrants": "node grantsSeeders.js",
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "author": "Digheontech",
   "license": "ISC",
@@ -23,11 +23,13 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "browser-detect": "^0.2.27",
+    "chai": "^4.2.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "html-pdf": "^2.2.0",
     "jsonwebtoken": "^8.2.1",
     "mailgun-js": "^0.18.0",
+    "mocha": "^6.0.2",
     "moment-timezone": "^0.5.14",
     "mysql2": "^1.5.3",
     "pug": "^2.0.3",
