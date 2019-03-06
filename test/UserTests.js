@@ -18,15 +18,6 @@ const { expect, should } = require('chai');
 describe('USER CRUD', async () => {
   const userController = new UserController(User, language);
 
-  /*beforeEach(async () => {
-    const name = 'MyNameTest';
-    const email = 'my_email.test@test.com';
-    const isEnabled = true;
-
-    const instance = await userController.storeUser(name, email, isEnabled);
-    this.user = instance;
-  });*/
-
   it('Create user', async () => {
     const name = 'MyNameTestCreate';
     const email = 'my_email.test_create@test.com';
@@ -53,7 +44,7 @@ describe('USER CRUD', async () => {
     expect(instance.name).to.equal(name);
     expect(instance.email).to.equal(email);
     expect(instance.isEnabled).to.equal(isEnabled);
-    // this.user = instance;
+    this.user = instance;
     // await userController.destroy({ where: { id: instance.id } });
     // await userController.destroy({ where: { id: this.user.id } });
   });
