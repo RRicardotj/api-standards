@@ -18,14 +18,14 @@ const { expect, should } = require('chai');
 describe('USER CRUD', async () => {
   const userController = new UserController(User, language);
 
-  before(async () => {
+  /*beforeEach(async () => {
     const name = 'MyNameTest';
     const email = 'my_email.test@test.com';
     const isEnabled = true;
 
     const instance = await userController.storeUser(name, email, isEnabled);
     this.user = instance;
-  });
+  });*/
 
   it('Create user', async () => {
     const name = 'MyNameTestCreate';
@@ -38,18 +38,18 @@ describe('USER CRUD', async () => {
     expect(instance.email).to.equal(email);
     expect(instance.isEnabled).to.equal(isEnabled);
     // this.user = instance;
-    await userController.destroy({ where: { id: instance.id } });
+    // await userController.destroy({ where: { id: instance.id } });
     // await userController.destroy({ where: { id: this.user.id } });
+    this.user = instance;
   });
 
   it('Update User', async () => {
-    console.log('Updating: ', this.user.id);
     const name = 'MyNameTestEdit';
     const email = 'my_email.test_edit@test.com';
     const isEnabled = false;
 
     const instance = await userController.updateUser(this.user.id, name, email, isEnabled);
-    // console.log(instance);
+
     expect(instance.name).to.equal(name);
     expect(instance.email).to.equal(email);
     expect(instance.isEnabled).to.equal(isEnabled);
@@ -60,7 +60,6 @@ describe('USER CRUD', async () => {
 
 
   it('Destroy user tested', async () => {
-    console.log('Destroy: ', this.user.id);
     await User.destroy({ where: { id: this.user.id } });
     const destroyed = await User.findById(this.user.id);
     should().not.exist(destroyed);

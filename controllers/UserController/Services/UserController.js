@@ -17,7 +17,7 @@ class UserController extends Handler {
     this.listUsers = this.listUsers.bind(this);
     this.getSessions = this.getSessions.bind(this);
     this.storeUser = this.storeUser.bind(this);
-    this.updateUser = this.storeUser.bind(this);
+    this.updateUser = this.updateUser.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
   }
 
