@@ -51,6 +51,7 @@ class UserController extends Handler {
     });
 
     userInstance = userInstance.toJSON();
+    delete userInstance.password;
     userInstance.plainPassword = plainPassword;
     return userInstance;
   }

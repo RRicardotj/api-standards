@@ -15,7 +15,7 @@ const { expect, should } = require('chai');
 }
 */
 
-describe('USER CRUD', async () => {
+describe('USER CRUD TEST', async () => {
   const userController = new UserController(User, language);
 
   it('Create user', async () => {
