@@ -114,29 +114,7 @@ const resetGrantAccessKeys = async (grantId, accessKeysId) => {
 };
 
 
-const resetGrantWidgets = async (grantId, widgetId) => {
-  await sequelize
-    .query(
-      `DELETE FROM grants__widgets 
-      WHERE grantId = :grantId`,
-      {
-        type: sequelize.QueryTypes.DELETE,
-        replacements: { grantId },
-      },
-    );
-  await sequelize
-    .query(
-      `INSERT INTO grants__widgets
-        SELECT null, :grantId, w.id, NOW(), NOW() FROM widgets w WHERE w.id IN (${widgetId.join(',')});`,
-      {
-        type: sequelize.QueryTypes.INSERT,
-        replacements: { grantId },
-      },
-    );
-  return true;
-};
-
-model.seed = async (grantsElements, accessKeys, widgets) => {
+model.seed = async (grantsElements, accessKeys) => {
   if (!Array.isArray(grantsElements)) { return {}; }
 
   const grants = {};
@@ -177,30 +155,6 @@ model.seed = async (grantsElements, accessKeys, widgets) => {
       } else {
         throw new Error(`El access Key ${grantsElements[i].accessKeys[j]} es invalido`);
       }
-    }
-
-    // widgets
-    const widgetsId = [];
-    for (let j = 0; j < grantsElements[i].widgets.length; j += 1) {
-      if (widgets[grantsElements[i].widgets[j]]) {
-        widgetsId.push(widgets[grantsElements[i].widgets[j]].id);
-
-        for (let h = 0; h < widgets[grantsElements[i].widgets[j]].accessKeys.length; h += 1) {
-          if (accessKeys[widgets[grantsElements[i].widgets[j]].accessKeys[h]]
-            && accessKeyId.indexOf(widgets[grantsElements[i].widgets[j]].accessKeys[h]) < 0) {
-            accessKeyId.push(accessKeys[widgets[grantsElements[i].widgets[j]].accessKeys[h]]);
-          } else {
-            throw new Error(`El access Key ${widgets[grantsElements[i].widgets[j]].accessKeys[h]} dentro del widget ${grantsElements[i].widgets[j]} es invalido`);
-          }
-        }
-      } else {
-        throw new Error(`El widget ${grantsElements[i].widgets[j]} es invalido`);
-      }
-    }
-
-    if (widgetsId.length > 0) {
-      grantWidgetPromises.push(resetGrantWidgets(item.id, widgetsId));
-      // await resetGrantWidgets(item.id, widgetsId);
     }
 
     if (accessKeyId.length > 0) {

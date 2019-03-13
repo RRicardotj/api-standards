@@ -62,8 +62,6 @@
     }
   ],
 
-  "widgets" : [
-  ],
 
   "grants" : [
     {
@@ -72,8 +70,7 @@
       "description": "Listar los roles registrados",
       "code": "G_ROL_VIEW",
       "menu": "ROLES",
-      "accessKeys": ["ROL_VIEW", "ROL_VIEW_SHO", "GRNT_VIEW", "ROL_USR_GET"],
-      "widgets": []
+      "accessKeys": ["ROL_VIEW", "ROL_VIEW_SHO", "GRNT_VIEW", "ROL_USR_GET"]
     },
     {
       "name": "Roles - Administrar",
@@ -81,8 +78,7 @@
       "description": "Administrar los roles registrados",
       "code": "G_ROL_MANAGE",
       "menu": "ROLES",
-      "accessKeys": ["ROL_VIEW", "ROL_DROP", "ROL_VIEW_SHO", "ROL_MANAGE", "ROL_GRANT_IND", "GRNT_VIEW", "ROL_GRANT_UPD", "ROLUSR_MANAGE", "ROL_USR_GET"],
-      "widgets": []
+      "accessKeys": ["ROL_VIEW", "ROL_DROP", "ROL_VIEW_SHO", "ROL_MANAGE", "ROL_GRANT_IND", "GRNT_VIEW", "ROL_GRANT_UPD", "ROLUSR_MANAGE", "ROL_USR_GET"]
     },
     {
       "name": "Usuarios - Ver",
@@ -90,8 +86,7 @@
       "description": "Listar los usuarios registradas",
       "code": "G_USR_VIEW",
       "menu": "USER",
-      "accessKeys": ["USR_VIEW", "ROL_VIEW_SHO", "USR_VIEW_SESS", "USR_VIEW_GRANTS"],
-      "widgets": []
+      "accessKeys": ["USR_VIEW", "ROL_VIEW_SHO", "USR_VIEW_SESS", "USR_VIEW_GRANTS"]
     },
     {
       "name": "Usuarios - Administrar",
@@ -99,8 +94,7 @@
       "description": "Administrar los usuarios registradas",
       "code": "G_USR_MANAGE",
       "menu": "USER",
-      "accessKeys": ["USR_MANAGE", "ROL_DROP", "USR_VIEW_SESS", "USR_VIEW_GRANTS"],
-      "widgets": []
+      "accessKeys": ["USR_MANAGE", "ROL_DROP", "USR_VIEW_SESS", "USR_VIEW_GRANTS"]
     }
   ]
 }

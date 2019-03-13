@@ -9,12 +9,6 @@ sequelize.options.logging = false;
 
 const { expect, should } = require('chai');
 
-/* function checkValue(testValue, expectedResult) {
-  const result = fizzBuzz(testValue);
-  expect(result).to.equal(expectedResult);
-}
-*/
-
 describe('USER CRUD TEST', async () => {
   const userController = new UserController(User, language);
 
@@ -58,18 +52,3 @@ describe('USER CRUD TEST', async () => {
 
   after(() => (sequelize.close()));
 });
-
-/*
-const assert = require('assert');
-
-describe('Array', () => {
-  describe('#indexOf()', () => {
-    it('should return -1 when the value is not present', () => {
-      assert.equal([1, 2, 3].indexOf(4), -1);
-    });
-  });
-});
-
-*/
-
-// sequelize.close();

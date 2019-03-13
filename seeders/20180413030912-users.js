@@ -13,14 +13,16 @@ module.exports = {
         isEnabled: 1,
         createdAt: '2017-05-25 02:45:14',
         updatedAt: '2017-05-25 02:45:14',
+        language: 'es',
       },
       {
-        name: 'Admin1',
-        email: '1admin@admin.com',
+        name: 'Admin2',
+        email: '2admin@admin.com',
         password: hashedPassword,
         isEnabled: 1,
         createdAt: '2017-05-25 02:45:14',
         updatedAt: '2017-05-25 02:45:14',
+        language: 'en',
       },
     ], {});
   },

@@ -3,17 +3,13 @@ const sequelize = require('./common/connection');
 const AccessKey = require('./models/AccessKey');
 const Grant = require('./models/Grants');
 const GrantRole = require('./models/GrantRole');
-const Widget = require('./models/Widget');
 
 const grantsStructure = require('./common/grants.json');
 
 const grantsSeed = async () => {
   const accessKeysSeeds = await AccessKey.seed(grantsStructure.accessKeys);
 
-  const widgetsSeeds = await Widget.seed(grantsStructure.widgets);
-
-
-  await Grant.seed(grantsStructure.grants, accessKeysSeeds, widgetsSeeds)
+  await Grant.seed(grantsStructure.grants, accessKeysSeeds)
     .catch((err) => { throw new Error(err); });
 
   await GrantRole.resetSuperAdminGrants();
