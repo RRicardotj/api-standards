@@ -1,6 +1,5 @@
 const socketio = require('socket.io');
 const socketioJwt = require('socketio-jwt');
-const Widget = require('./models/Widget');
 
 let io = null;
 const sockets = {};
@@ -16,7 +15,7 @@ const bootServer = () => {
   nsp.on('connection', async (socket) => {
     console.log('\x1b[33m%s\x1b[0m', 'NEW CONNECTION'); // eslint-disable-line
 
-    const userWidgets = await Widget.getByUser(socket.decoded_token.user);
+    const userWidgets = []; // await Widget.getByUser(socket.decoded_token.user);
 
     for (let i = 0; i < userWidgets.length; i += 1) {
       socket.join(userWidgets[i].code);
