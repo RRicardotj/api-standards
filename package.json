@@ -31,6 +31,7 @@
     "mailgun-js": "^0.18.0",
     "mocha": "^6.0.2",
     "moment-timezone": "^0.5.14",
+    "mongodb": "^3.2.3",
     "mysql2": "^1.5.3",
     "pug": "^2.0.3",
     "randomstring": "^1.1.5",
