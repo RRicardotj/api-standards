@@ -31,8 +31,8 @@
     "mysql2": "^1.5.3",
     "pug": "^2.0.3",
     "randomstring": "^1.1.5",
-    "sequelize": "^4.37.6",
-    "sequelize-cli": "^4.0.0",
+    "sequelize": "5.3.0",
+    "sequelize-cli": "^5.3.0",
     "validatorjs": "^3.14.2",
     "request-promise": "^4.2.2"
   },
