@@ -3629,23 +3629,13 @@ mocha@^2.2.1:
     supports-color "1.2.0"
     to-iso-string "0.0.2"
 
-moment-timezone@^0.5.14:
-  version "0.5.21"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.21.tgz#3cba247d84492174dbf71de2a9848fa13207b845"
+moment-timezone@^0.5.21, moment-timezone@^0.5.35:
+  version "0.5.35"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.35.tgz#6fa2631bdbe8ff04f6b8753f7199516be6dc9839"
   dependencies:
     moment ">= 2.9.0"
 
-moment-timezone@^0.5.21:
-  version "0.5.26"
-  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.26.tgz#c0267ca09ae84631aa3dc33f65bedbe6e8e0d772"
-  dependencies:
-    moment ">= 2.9.0"
-
-"moment@>= 2.9.0":
-  version "2.22.2"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
-
-moment@^2.24.0:
+"moment@>= 2.9.0", moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
 
