@@ -23,7 +23,7 @@
     "body-parser": "^1.18.2",
     "browser-detect": "^0.2.27",
     "dotenv": "^5.0.1",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "html-pdf": "^2.2.0",
     "jsonwebtoken": "^8.2.1",
     "mailgun-js": "^0.18.0",
